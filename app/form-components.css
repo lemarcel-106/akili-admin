@@ -1,0 +1,187 @@
+/* Custom styles for form components */
+
+/* Radio Buttons - Modern circular design */
+input[type="radio"] {
+  width: 24px !important;
+  height: 24px !important;
+  border: 3px solid rgb(209 213 219) !important;
+  border-radius: 50% !important;
+  background: white !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  position: relative !important;
+}
+
+input[type="radio"]:checked {
+  border-color: rgb(59 130 246) !important;
+  background: rgb(59 130 246) !important;
+  position: relative !important;
+}
+
+input[type="radio"]:checked::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: white !important;
+  border-radius: 50% !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  animation: radioCheck 0.2s ease-out !important;
+}
+
+input[type="radio"]:hover:not(:checked) {
+  border-color: rgb(156 163 175) !important;
+  background: rgb(249 250 251) !important;
+}
+
+input[type="radio"]:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1) !important;
+}
+
+/* Checkboxes - Modern square design */
+input[type="checkbox"] {
+  width: 24px !important;
+  height: 24px !important;
+  border: 3px solid rgb(209 213 219) !important;
+  border-radius: 8px !important;
+  background: white !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  position: relative !important;
+}
+
+input[type="checkbox"]:checked {
+  border-color: rgb(59 130 246) !important;
+  background: rgb(59 130 246) !important;
+  position: relative !important;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓' !important;
+  position: absolute !important;
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+input[type="checkbox"]:hover:not(:checked) {
+  border-color: rgb(156 163 175) !important;
+  background: rgb(249 250 251) !important;
+}
+
+input[type="checkbox"]:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1) !important;
+}
+
+/* Dark mode for radio buttons */
+.dark input[type="radio"] {
+  border-color: rgb(75 85 99) !important;
+  background: rgb(31 41 55) !important;
+}
+
+.dark input[type="radio"]:checked {
+  border-color: rgb(59 130 246) !important;
+  background: rgb(59 130 246) !important;
+}
+
+.dark input[type="radio"]:hover:not(:checked) {
+  border-color: rgb(107 114 128) !important;
+  background: rgb(55 65 81) !important;
+}
+
+/* Dark mode for checkboxes */
+.dark input[type="checkbox"] {
+  border-color: rgb(75 85 99) !important;
+  background: rgb(31 41 55) !important;
+}
+
+.dark input[type="checkbox"]:checked {
+  border-color: rgb(59 130 246) !important;
+  background: rgb(59 130 246) !important;
+}
+
+.dark input[type="checkbox"]:hover:not(:checked) {
+  border-color: rgb(107 114 128) !important;
+  background: rgb(55 65 81) !important;
+}
+
+/* Animation for radio button selection */
+@keyframes radioCheck {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animation for checkbox checkmark */
+@keyframes checkmark {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+input[type="checkbox"]:checked::after,
+input[type="radio"]:checked::after {
+  animation: checkmark 0.2s ease-out !important;
+}
+
+/* Better alignment for form groups */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Label improvements */
+label {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Disabled state */
+input[type="radio"]:disabled,
+input[type="checkbox"]:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+input[type="radio"]:disabled:hover,
+input[type="checkbox"]:disabled:hover {
+  border-color: rgb(209 213 219) !important;
+  background: white !important;
+}
+
+.dark input[type="radio"]:disabled:hover,
+.dark input[type="checkbox"]:disabled:hover {
+  border-color: rgb(75 85 99) !important;
+  background: rgb(31 41 55) !important;
+}

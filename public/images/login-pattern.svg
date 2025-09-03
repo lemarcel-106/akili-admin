@@ -1,0 +1,46 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6d00;stop-opacity:0.05" />
+      <stop offset="50%" style="stop-color:#5e12ca;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#ff6d00;stop-opacity:0.03" />
+    </linearGradient>
+    
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="60" height="60">
+      <circle cx="30" cy="30" r="2" fill="#ff6d00" opacity="0.1"/>
+      <circle cx="10" cy="50" r="1.5" fill="#5e12ca" opacity="0.08"/>
+      <circle cx="50" cy="10" r="1" fill="#ff6d00" opacity="0.06"/>
+    </pattern>
+    
+    <pattern id="lines" patternUnits="userSpaceOnUse" width="100" height="100">
+      <path d="M0 50 L100 50" stroke="#5e12ca" stroke-width="0.5" opacity="0.05"/>
+      <path d="M50 0 L50 100" stroke="#ff6d00" stroke-width="0.5" opacity="0.03"/>
+      <path d="M0 0 L100 100" stroke="#5e12ca" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+    
+    <pattern id="hexagons" patternUnits="userSpaceOnUse" width="80" height="69.28">
+      <polygon points="40,2 60,20 60,40 40,58 20,40 20,20" fill="none" stroke="#ff6d00" stroke-width="0.5" opacity="0.06"/>
+      <polygon points="80,37 100,55 100,75 80,93 60,75 60,55" fill="none" stroke="#5e12ca" stroke-width="0.3" opacity="0.04"/>
+    </pattern>
+  </defs>
+  
+  <!-- Base gradient -->
+  <rect width="1920" height="1080" fill="url(#grad1)"/>
+  
+  <!-- Geometric shapes -->
+  <rect width="1920" height="1080" fill="url(#dots)"/>
+  <rect width="1920" height="1080" fill="url(#lines)"/>
+  <rect width="1920" height="1080" fill="url(#hexagons)"/>
+  
+  <!-- Large decorative circles -->
+  <circle cx="200" cy="200" r="150" fill="#ff6d00" opacity="0.02"/>
+  <circle cx="1700" cy="300" r="200" fill="#5e12ca" opacity="0.03"/>
+  <circle cx="1600" cy="800" r="120" fill="#ff6d00" opacity="0.02"/>
+  <circle cx="300" cy="900" r="80" fill="#5e12ca" opacity="0.04"/>
+  
+  <!-- Floating geometric shapes -->
+  <polygon points="100,600 150,650 100,700 50,650" fill="#ff6d00" opacity="0.03"/>
+  <polygon points="1800,500 1850,520 1830,570 1780,550" fill="#5e12ca" opacity="0.04"/>
+  <rect x="1500" y="150" width="40" height="40" rx="5" fill="#ff6d00" opacity="0.03" transform="rotate(45 1520 170)"/>
+  <rect x="400" y="400" width="30" height="30" rx="3" fill="#5e12ca" opacity="0.04" transform="rotate(30 415 415)"/>
+</svg>

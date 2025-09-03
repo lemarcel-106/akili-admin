@@ -1,0 +1,177 @@
+/* MathLive Fonts */
+@import url('../public/mathlive/mathlive-fonts.css');
+@import url('../public/mathlive/mathlive-static.css');
+
+/* Custom MathLive styles for main text areas */
+math-field:not(.math-input-container math-field) {
+  font-size: 2.125rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border-radius: 0.75rem;
+}
+
+/* Specific styles for single-line math fields in containers */
+.math-input-container math-field {
+  width: 100% !important;
+  font-size: 1.25rem !important;
+  line-height: 3.75rem !important;
+  padding: 0.875rem 6rem 0.875rem 1rem !important; /* Extra padding right for 2 buttons */
+  border-radius: 0.75rem !important;
+  min-height: 56px !important;
+  height: 89px !important;
+  display: block !important;
+  background: rgb(249 250 251) !important;
+  border: 2px solid rgb(209 213 219) !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+}
+
+.math-input-container math-field:hover {
+  border-color: rgb(156 163 175) !important;
+}
+
+math-field:focus {
+  outline: none;
+  border-color: rgb(59 130 246) !important;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1) !important;
+}
+
+.dark math-field:not(.flex-1) {
+  background: rgb(17 24 39);
+  color: white;
+}
+
+.dark .math-input-container math-field {
+  background: rgb(17 24 39) !important;
+  border-color: rgb(55 65 81) !important;
+  color: white !important;
+}
+
+.dark .math-input-container math-field:hover {
+  border-color: rgb(107 114 128) !important;
+}
+
+.dark math-field:focus {
+  border-color: rgb(59 130 246) !important;
+}
+
+/* Remove MathLive's internal padding for consistency */
+.math-input-container math-field::part(content) {
+  padding: 0 !important;
+}
+
+/* Ensure proper focus styles */
+.math-input-container math-field:focus {
+  border-color: rgb(59 130 246) !important;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1) !important;
+}
+
+math-field::part(virtual-keyboard-toggle) {
+  display: none;
+}
+
+/* Virtual Keyboard Styles */
+.ML__keyboard {
+  --keyboard-background: #f8f9fa;
+  --keyboard-border: #dee2e6;
+  --keycap-background: white;
+  --keycap-border: #ced4da;
+  --keycap-background-hover: #e9ecef;
+  --keycap-text: #212529;
+  --keycap-secondary-text: #6c757d;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-height: 40vh;
+  border-top: 2px solid var(--keyboard-border);
+  font-size: 16px;
+  z-index: 9999;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .ML__keyboard {
+  --keyboard-background: rgb(17 24 39);
+  --keyboard-border: rgb(55 65 81);
+  --keycap-background: rgb(31 41 55);
+  --keycap-border: rgb(55 65 81);
+  --keycap-background-hover: rgb(55 65 81);
+  --keycap-text: white;
+  --keycap-secondary-text: rgb(156 163 175);
+}
+
+.ML__keyboard .MLK__keycap {
+  background: var(--keycap-background);
+  border: 1px solid var(--keycap-border);
+  color: var(--keycap-text);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease;
+}
+
+.ML__keyboard .MLK__keycap:hover {
+  background: var(--keycap-background-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ML__keyboard .MLK__keycap:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.ML__keyboard .MLK__toolbar {
+  background: var(--keyboard-background);
+  border-bottom: 1px solid var(--keyboard-border);
+}
+
+/* Keyboard layout selector */
+.ML__keyboard .MLK__layer-switch {
+  background: var(--keycap-background);
+  color: var(--keycap-text);
+  border: 1px solid var(--keycap-border);
+  border-radius: 6px;
+}
+
+.ML__keyboard .MLK__layer-switch:hover {
+  background: var(--keycap-background-hover);
+}
+
+/* Selected keyboard layout */
+.ML__keyboard .MLK__keycap.is-pressed,
+.ML__keyboard .MLK__keycap.is-active {
+  background: rgb(59 130 246);
+  color: white;
+  border-color: rgb(59 130 246);
+}
+
+/* Math symbols in keyboard */
+.ML__keyboard .MLK__keycap .MLK__tex {
+  color: var(--keycap-text);
+  font-size: 18px;
+}
+
+/* Shift/modifier keys */
+.ML__keyboard .MLK__keycap.MLK__modifier {
+  background: var(--keycap-background);
+  color: var(--keycap-secondary-text);
+  font-weight: 500;
+}
+
+/* Virtual keyboard container animation */
+.ML__keyboard-container {
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

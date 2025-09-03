@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Akili Light Theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 16%;
+    --primary: 260 84% 60%; /* violet-600 equivalent */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 249 84% 43%; /* #5d11ca */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 260 84% 60%;
+    --accent-foreground: 0 0% 16%;
+    --destructive: 345 100% 55%; /* #ff1744 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 93%;
+    --input: 0 0% 93%;
+    --ring: 260 84% 60%;
+    --radius: 0.5rem;
+    --success: 150 100% 39%; /* #00c851 */
+    --warning: 260 84% 60%; /* violet-600 equivalent */
+    --info: 249 84% 43%; /* #5d11ca */
+  }
+
+  .dark {
+    /* Akili Dark Theme with modern colors */
+    --background: 220 17% 14%; /* oklch(0.2679 0.0036 106.6427) converted */
+    --foreground: 210 8% 95%; /* oklch(0.8074 0.0142 93.0137) converted */
+    --card: 220 15% 16%; /* oklch(0.2679 0.0036 106.6427) slightly lighter */
+    --card-foreground: 210 5% 98%; /* oklch(0.9818 0.0054 95.0986) converted */
+    --popover: 220 14% 18%; /* oklch(0.3085 0.0035 106.6039) converted */
+    --popover-foreground: 210 4% 92%; /* oklch(0.9211 0.0040 106.4781) converted */
+    --primary: 260 84% 60%; /* violet-600 equivalent */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 249 84% 43%; /* #5d11ca - Keep Akili purple */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 18% 12%; /* oklch(0.2213 0.0038 106.7070) converted */
+    --muted-foreground: 210 10% 77%; /* oklch(0.7713 0.0169 99.0657) converted */
+    --accent: 260 84% 55%; /* Slightly darker violet accent */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%; /* oklch(0.6368 0.2078 25.3313) converted */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 12% 22%; /* oklch(0.3618 0.0101 106.8928) converted */
+    --input: 220 10% 27%; /* oklch(0.4336 0.0113 100.2195) converted */
+    --ring: 260 84% 60%; /* Keep Akili orange for focus ring */
+    --success: 150 100% 39%;
+    --warning: 260 84% 60%;
+    --info: 249 84% 43%;
+  }
+
+
+}
+
+/* Grid Pattern for Dashboard */
+@layer utilities {
+  .bg-grid-gray-100\/50 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+  
+  .dark .bg-grid-gray-800\/50 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+}
+
+/* Stats Card Animations & Patterns */
+@layer components {
+  /* Motif de fond pour les cartes principales */
+  .card-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+    position: relative;
+  }
+
+  .card-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      hsl(var(--background) / 0.97) 0%, 
+      hsl(var(--background) / 0.98) 100%);
+    border-radius: inherit;
+  }
+
+  .card-pattern > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Motif hexagonal subtil pour les zones importantes */
+  .hex-pattern {
+    background-image: 
+      radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.03) 0%, transparent 50%),
+      conic-gradient(from 0deg at 50% 50%, 
+        hsl(var(--primary) / 0.02) 0deg, transparent 60deg,
+        hsl(var(--secondary) / 0.02) 120deg, transparent 180deg,
+        hsl(var(--primary) / 0.02) 240deg, transparent 300deg,
+        hsl(var(--secondary) / 0.02) 360deg);
+    background-size: 60px 60px, 30px 30px;
+  }
+
+  .stats-card {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .icon-container {
+    @apply transition-transform duration-200 group-hover:scale-105;
+  }
+  
+  .form-field {
+    @apply transition-colors duration-200 focus-within:border-primary;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .button-pulse {
+    @apply transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(260 84% 60% / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(249 84% 43% / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(260 84% 60% / 0.02) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(0 0% 100% / 0.8) 0%, hsl(0 0% 98% / 0.9) 100%);
+    background-attachment: fixed;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  }
+
+  .dark body, [data-theme="dark"] body, [data-theme="akili-dark"] body {
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(260 84% 60% / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(249 84% 43% / 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(260 84% 60% / 0.03) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(0 0% 10% / 0.9) 0%, hsl(0 0% 8% / 0.95) 100%);
+  }
+  
+  /* Force les thèmes à être appliqués correctement */
+  html[data-theme="akili"] {
+    color-scheme: light;
+  }
+  
+  html[data-theme="akili-dark"] {
+    color-scheme: dark;
+  }
+  
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+  
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  /* Transition fluide pour les changements de thème */
+  * {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  
+  /* Augmentation de la taille de police pour le contenu principal (sauf sidebar) */
+  main .text-sm,
+  .content .text-sm,
+  div:not(.sidebar):not([class*="sidebar"]) .text-sm {
+    font-size: 1.05rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  main .text-xs,
+  .content .text-xs,
+  div:not(.sidebar):not([class*="sidebar"]) .text-xs {
+    font-size: 0.95rem !important;
+    line-height: 1.25rem !important;
+  }
+  
+  main .text-base,
+  .content .text-base,
+  div:not(.sidebar):not([class*="sidebar"]) .text-base {
+    font-size: 1.125rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  main p,
+  .content p,
+  main td,
+  .content td,
+  main li,
+  .content li {
+    font-size: 1.05rem !important;
+  }
+  
+  /* Animations pour les modals améliorés */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-scaleIn {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  .animate-slideUp {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Effet de survol amélioré pour les champs de formulaire */
+  .form-control:hover input,
+  .form-control:hover textarea,
+  .form-control:hover select {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animation des badges et indicateurs */
+  .badge-success {
+    animation: pulseSuccess 2s infinite;
+  }
+  
+  @keyframes pulseSuccess {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+  }
+  
+  /* Amélioration des toggles */
+  .toggle:checked {
+    animation: toggleBounce 0.3s ease;
+  }
+  
+  @keyframes toggleBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Animations spécifiques aux ambassadeurs */
+  .ambassador-card-enter {
+    animation: cardEnter 0.5s ease-out;
+  }
+  
+  @keyframes cardEnter {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Effet de brillance sur les badges */
+  .badge-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .badge-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 70%
+    );
+    transform: rotate(45deg) translateX(-100%);
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: rotate(45deg) translateX(-100%);
+    }
+    100% {
+      transform: rotate(45deg) translateX(100%);
+    }
+  }
+  
+  /* Animation de chargement pour les cartes */
+  .skeleton-pulse {
+    animation: skeletonPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes skeletonPulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  /* Effet de hover amélioré pour les cartes ambassadeurs */
+  .ambassador-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .ambassador-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      0 0 0 1px hsl(var(--primary) / 0.1);
+  }
+  
+  /* Animation pour les stats */
+  .stats-update {
+    animation: statsFlash 0.6s ease-out;
+  }
+  
+  @keyframes statsFlash {
+    0% {
+      background-color: hsl(var(--primary) / 0.1);
+      transform: scale(1);
+    }
+    50% {
+      background-color: hsl(var(--primary) / 0.2);
+      transform: scale(1.02);
+    }
+    100% {
+      background-color: transparent;
+      transform: scale(1);
+    }
+  }
+  
+  /* Effet de particules pour les actions réussies */
+  .success-particle {
+    position: absolute;
+    pointer-events: none;
+    animation: particleFloat 2s ease-out forwards;
+  }
+  
+  @keyframes particleFloat {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(0);
+    }
+    20% {
+      transform: translateY(-20px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100px) scale(0.5);
+    }
+  }
+}
+
+/* Rich Text Editor Styles */
+.ProseMirror {
+  @apply min-h-[200px] max-h-[400px] overflow-y-auto focus:outline-none px-3 py-2;
+}
+
+.ProseMirror p {
+  @apply mb-2;
+}
+
+.ProseMirror h1 {
+  @apply text-2xl font-bold mb-3;
+}
+
+.ProseMirror h2 {
+  @apply text-xl font-bold mb-2;
+}
+
+.ProseMirror h3 {
+  @apply text-lg font-bold mb-2;
+}
+
+.ProseMirror ul {
+  @apply list-disc list-inside mb-2 ml-4;
+}
+
+.ProseMirror ol {
+  @apply list-decimal list-inside mb-2 ml-4;
+}
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic mb-2 text-gray-600 dark:text-gray-400;
+}
+
+.ProseMirror table {
+  @apply w-full border-collapse mb-2;
+}
+
+.ProseMirror td,
+.ProseMirror th {
+  @apply border border-gray-300 dark:border-gray-600 px-2 py-1;
+}
+
+.ProseMirror th {
+  @apply bg-gray-100 dark:bg-gray-800 font-bold;
+}
+
+/* Math Formula Styles */
+.math-inline {
+  @apply inline-block mx-1 px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded font-mono text-sm;
+}
+
+.math-block {
+  @apply block my-3 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg font-mono text-sm overflow-x-auto;
+}
+
+/* LaTeX-style formula rendering */
+.ProseMirror code {
+  @apply px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm font-mono text-violet-600 dark:text-violet-400;
+}
+
+/* Formula blocks - for LaTeX formulas between $$ */
+.ProseMirror p:has(> code:first-child:last-child) {
+  @apply text-center my-4;
+}
+
+.ProseMirror p > code:first-child:last-child {
+  @apply inline-block px-4 py-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg text-base;
+}
+
+/* Superscript and Subscript */
+.ProseMirror sup {
+  @apply text-xs align-super;
+}
+
+.ProseMirror sub {
+  @apply text-xs align-sub;
+}
+
+/* Strong and emphasis */
+.ProseMirror strong {
+  @apply font-bold text-gray-900 dark:text-gray-100;
+}
+
+.ProseMirror em {
+  @apply italic;
+}
+
+.ProseMirror s {
+  @apply line-through;
+}
